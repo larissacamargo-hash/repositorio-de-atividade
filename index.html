@@ -1,611 +1,106 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PAC-MAN Realista</title>
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    background: #000;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    font-family: 'Press Start 2P', 'Courier New', monospace;
-    overflow: hidden;
-  }
-  #ui {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 560px;
-    padding: 8px 0;
-    color: #fff;
-    font-size: 12px;
-    letter-spacing: 1px;
-  }
-  #ui span { color: #FFD700; }
-  #lives-display { display: flex; gap: 6px; align-items: center; }
-  .life-icon { width: 16px; height: 16px; background: #FFD700; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); }
-  canvas {
-    border: 3px solid #1a1aff;
-    border-radius: 4px;
-    box-shadow: 0 0 30px #1a1aff88, 0 0 60px #1a1aff44;
-    display: block;
-  }
-  #overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(0,0,0,0.88);
-    border: 3px solid #FFD700;
-    border-radius: 12px;
-    padding: 32px 48px;
-    text-align: center;
-    color: #fff;
-    box-shadow: 0 0 30px #FFD70088;
-    z-index: 10;
-  }
-  #overlay h1 { color: #FFD700; font-size: 28px; margin-bottom: 12px; text-shadow: 0 0 20px #FFD700; }
-  #overlay p { font-size: 11px; color: #aaa; margin: 6px 0; }
-  #overlay .btn {
-    margin-top: 20px;
-    padding: 12px 32px;
-    background: #FFD700;
-    color: #000;
-    border: none;
-    border-radius: 6px;
-    font-family: inherit;
-    font-size: 13px;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  #overlay .btn:hover { background: #fff; transform: scale(1.05); }
-  #msg { color: #FF4444; font-size: 13px; margin-top: 8px; min-height: 18px; }
-</style>
+  <meta charset="UTF-8">
+  <title>Meus Trabalhos - Hello Kitty</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      /* Aqui você coloca o link da imagem que quer usar como fundo */
+      background: url('hello kitty4.jpg') no-repeat center center fixed; 
+      background-size: cover;
+      color: #ff3399;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: rgba(255, 153, 204, 0.85);
+      padding: 20px;
+      border-bottom: 5px solid #ff66b2;
+    }
+
+    header img {
+      max-width: 150px;
+      margin-bottom: 10px;
+      border-radius: 50%;
+      border: 3px solid #fff;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin: 0;
+    }
+
+    p {
+      margin: 5px 0;
+    }
+
+    .link-list {
+      list-style: none;
+      padding: 0;
+      margin: 30px auto;
+      max-width: 400px;
+    }
+
+    .link-list li {
+      margin: 15px 0;
+    }
+
+    .link-list a {
+      display: block;
+      background-color: rgba(255, 240, 245, 0.9);
+      padding: 15px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: #ff3399;
+      font-weight: bold;
+      transition: 0.3s;
+      border: 2px solid #ff99cc;
+    }
+
+    .link-list a:hover {
+      background-color: #ffccdd;
+      transform: scale(1.05);
+    }
+
+    footer {
+      background-color: rgba(255, 153, 204, 0.85);
+      padding: 15px;
+      margin-top: 30px;
+      border-top: 5px solid #ff66b2;
+    }
+  </style>
 </head>
 <body>
-<div id="ui">
-  <div>SCORE: <span id="scoreVal">0</span></div>
-  <div>LEVEL: <span id="levelVal">1</span></div>
-  <div id="lives-display">LIVES: </div>
-</div>
-<canvas id="c" width="560" height="560"></canvas>
-<div id="overlay">
-  <h1>👻 PAC-MAN</h1>
-  <p>Use as <b style="color:#FFD700">setas</b> ou <b style="color:#FFD700">WASD</b> para mover</p>
-  <p>Coma os pontos e evite os fantasmas!</p>
-  <p>🔵 Pílula Power = Fantasmas ficam vulneráveis</p>
-  <p>🍒 Frutas = Pontos bônus</p>
-  <button class="btn" onclick="startGame()">▶ JOGAR</button>
-  <div id="msg"></div>
-</div>
+  <header>
+    <img src="hello kitty2.jpg" alt="Hello Kitty estilizada">
+    <h1>🌸 Meus projetos🌸</h1>
+    <p></p>
+  </header>
 
-<script>
-const canvas = document.getElementById('c');
-const ctx = canvas.getContext('2d');
-const CELL = 20, COLS = 28, ROWS = 28;
-const W = COLS * CELL, H = ROWS * CELL;
-canvas.width = W; canvas.height = H;
+  <main>
+    <ul class="link-list">
+      <li><a href="https://github.com/larissacamargo-hash/teste" target="_blank">Teste</a></li>
+      <li><a href="https://github.com/larissacamargo-hash/variavel.js" target="_blank">variavel.js</a></li>
+      <li><a href="https://larissacamargo-hash.github.io/phyton/index.html" target="_blank">phyton</a></li>
+      <li><a href="https://gamma.app/docs/Apresentacao-do-SuperApp-de-Agenda-Escolar-Revolucionando-a-Rotin-q95kvmve88zcsrb" target="_blank">App Agenda Escolar</a></li>
+      <li><a href="https://gamma.app/docs/Propriedade-Intelectual-Escolar-Protegendo-o-Conhecimento-e-a-Cri-ywqp11evj7vy8h1" target="_blank">Propriedade Intectual</a></li>
+      <li><a href="https://larissacamargo-hash.github.io/usandofor.js/index.html" target="_blank">usandofor.js</a></li>
+      <li><a href="https://gamma.app/docs/Ecossistema-de-Startups-2026-Brasil-e-America-Latina-dqmaimokvnuvjii" target="_blank">Startups</a></li>
+      <li><a href="https://larissacamargo-hash.github.io/filtrar.js/index.html" target="_blank">filtrar.js</a></li>
+      <li><a href="https://github.com/larissacamargo-hash/alterar---objet2---substring---colchete" target="_blank">alterar---objet2---substring---colchete
+      <li><a href="https://gamma.app/docs/Metricas-e-Melhorias-nos-Negocios-mkebu1txr11hy16" target="_blank">Metricas e Melhorias nos Negocios</a></li>
+      <li><a href="https://github.com/larissacamargo-hash/snack-expo" target="_blank">robson lindo .snack expo-mobile</a></li>
+      <li><a href="https://larissacamargo-hash.github.io/pacman/index.html" target="_blank">pac-man</a></li>
+      </a></li>
+  </ul>
+    </ul>
+  </main>
 
-// 0=empty, 1=wall, 2=dot, 3=power, 4=empty-eaten, 5=fruit
-const BASE_MAP = [
-  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-  [1,2,2,2,2,2,2,2,2,2,2,2,2,1,1,2,2,2,2,2,2,2,2,2,2,2,2,1],
-  [1,2,1,1,1,1,2,1,1,1,1,1,2,1,1,2,1,1,1,1,1,2,1,1,1,1,2,1],
-  [1,3,1,1,1,1,2,1,1,1,1,1,2,1,1,2,1,1,1,1,1,2,1,1,1,1,3,1],
-  [1,2,1,1,1,1,2,1,1,1,1,1,2,1,1,2,1,1,1,1,1,2,1,1,1,1,2,1],
-  [1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1],
-  [1,2,1,1,1,1,2,1,1,2,1,1,1,1,1,1,1,1,2,1,1,2,1,1,1,1,2,1],
-  [1,2,1,1,1,1,2,1,1,2,1,1,1,1,1,1,1,1,2,1,1,2,1,1,1,1,2,1],
-  [1,2,2,2,2,2,2,1,1,2,2,2,2,1,1,2,2,2,2,1,1,2,2,2,2,2,2,1],
-  [1,1,1,1,1,1,2,1,1,1,1,1,4,1,1,4,1,1,1,1,1,2,1,1,1,1,1,1],
-  [1,1,1,1,1,1,2,1,1,1,1,1,4,1,1,4,1,1,1,1,1,2,1,1,1,1,1,1],
-  [1,1,1,1,1,1,2,1,1,4,4,4,4,4,4,4,4,4,4,1,1,2,1,1,1,1,1,1],
-  [1,1,1,1,1,1,2,1,1,4,1,1,1,4,4,1,1,1,4,1,1,2,1,1,1,1,1,1],
-  [1,1,1,1,1,1,2,1,1,4,1,4,4,4,4,4,4,1,4,1,1,2,1,1,1,1,1,1],
-  [4,4,4,4,4,4,2,4,4,4,1,4,4,4,4,4,4,1,4,4,4,2,4,4,4,4,4,4],
-  [1,1,1,1,1,1,2,1,1,4,1,4,4,4,4,4,4,1,4,1,1,2,1,1,1,1,1,1],
-  [1,1,1,1,1,1,2,1,1,4,1,1,1,1,1,1,1,1,4,1,1,2,1,1,1,1,1,1],
-  [1,1,1,1,1,1,2,1,1,4,4,4,4,4,4,4,4,4,4,1,1,2,1,1,1,1,1,1],
-  [1,1,1,1,1,1,2,1,1,4,1,1,1,1,1,1,1,1,4,1,1,2,1,1,1,1,1,1],
-  [1,1,1,1,1,1,2,1,1,4,1,1,1,1,1,1,1,1,4,1,1,2,1,1,1,1,1,1],
-  [1,2,2,2,2,2,2,2,2,2,2,2,2,1,1,2,2,2,2,2,2,2,2,2,2,2,2,1],
-  [1,2,1,1,1,1,2,1,1,1,1,1,2,1,1,2,1,1,1,1,1,2,1,1,1,1,2,1],
-  [1,2,1,1,1,1,2,1,1,1,1,1,2,1,1,2,1,1,1,1,1,2,1,1,1,1,2,1],
-  [1,3,2,2,1,1,2,2,2,2,2,2,2,4,4,2,2,2,2,2,2,2,1,1,2,2,3,1],
-  [1,1,1,2,1,1,2,1,1,2,1,1,1,1,1,1,1,1,2,1,1,2,1,1,2,1,1,1],
-  [1,1,1,2,1,1,2,1,1,2,1,1,1,1,1,1,1,1,2,1,1,2,1,1,2,1,1,1],
-  [1,2,2,2,2,2,2,1,1,2,2,2,2,1,1,2,2,2,2,1,1,2,2,2,2,2,2,1],
-  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-];
-
-let map, pacman, ghosts, score, lives, level, gameRunning, powerTimer, animFrame;
-let fruitTimer = 0, fruitActive = false, fruitCell = null;
-
-const GHOST_COLORS = ['#FF0000','#FFB8FF','#00FFFF','#FFB852'];
-const GHOST_NAMES  = ['Blinky','Pinky','Inky','Clyde'];
-
-function deepCopy(m){ return m.map(r=>r.slice()); }
-
-function initLevel(){
-  map = deepCopy(BASE_MAP);
-  pacman = { x:13.5, y:23, dx:0, dy:0, nextDx:0, nextDy:0, mouthAngle:0.25, mouthDir:1, alive:true, deathAnim:0 };
-  ghosts = GHOST_COLORS.map((c,i)=>({
-    x: 11+i*1.5, y: 13.5,
-    dx:0, dy:0,
-    color: c,
-    name: GHOST_NAMES[i],
-    mode:'house',
-    houseTimer: i*120,
-    frightened:false,
-    eaten:false,
-    blinkTimer:0,
-    scatter:true,
-    scatterTimer:300+i*20,
-    targetX:0, targetY:0,
-    eyeDir:{x:1,y:0}
-  }));
-  powerTimer = 0;
-  fruitTimer = 0; fruitActive = false; fruitCell = null;
-  countDots();
-}
-
-let totalDots=0, dotsEaten=0, ghostCombo=0;
-function countDots(){
-  totalDots=0; dotsEaten=0;
-  for(let r=0;r<ROWS;r++) for(let c=0;c<COLS;c++) if(map[r][c]===2||map[r][c]===3) totalDots++;
-}
-
-function startGame(){
-  document.getElementById('overlay').style.display='none';
-  score=0; lives=3; level=1;
-  initLevel();
-  gameRunning=true;
-  if(animFrame) cancelAnimationFrame(animFrame);
-  loop();
-}
-
-function isWall(x,y){
-  let c=Math.round(x), r=Math.round(y);
-  c=((c%COLS)+COLS)%COLS; r=((r%ROWS)+ROWS)%ROWS;
-  return map[r][c]===1;
-}
-
-function canMove(x,y,dx,dy){
-  let nx=x+dx*0.1, ny=y+dy*0.1;
-  let margin=0.45;
-  let checks=[ [nx+margin,ny+margin],[nx-margin,ny+margin],[nx+margin,ny-margin],[nx-margin,ny-margin] ];
-  if(dx!==0){ checks=[[nx+(dx>0?margin:-margin),y+margin],[nx+(dx>0?margin:-margin),y-margin]]; }
-  if(dy!==0){ checks=[[x+margin,ny+(dy>0?margin:-margin)],[x-margin,ny+(dy>0?margin:-margin)]]; }
-  for(let [cx,cy] of checks){
-    let col=Math.floor(cx), row=Math.floor(cy);
-    col=((col%COLS)+COLS)%COLS; row=((row%ROWS)+ROWS)%ROWS;
-    if(map[row][col]===1) return false;
-  }
-  return true;
-}
-
-function movePacman(){
-  let p=pacman; if(!p.alive) return;
-  let speed=0.1*(1+level*0.05);
-  // try next direction
-  if((p.nextDx!==0||p.nextDy!==0) && canMove(p.x,p.y,p.nextDx,p.nextDy)){
-    p.dx=p.nextDx; p.dy=p.nextDy;
-  }
-  if(canMove(p.x,p.y,p.dx,p.dy)){
-    p.x+=p.dx*speed; p.y+=p.dy*speed;
-  }
-  // tunnel
-  if(p.x<0) p.x=COLS-0.5; if(p.x>=COLS) p.x=0.5;
-  if(p.y<0) p.y=ROWS-0.5; if(p.y>=ROWS) p.y=0.5;
-
-  let col=Math.round(p.x), row=Math.round(p.y);
-  col=((col%COLS)+COLS)%COLS; row=((row%ROWS)+ROWS)%ROWS;
-  if(map[row][col]===2){
-    map[row][col]=4; score+=10; dotsEaten++;
-    updateScore();
-  } else if(map[row][col]===3){
-    map[row][col]=4; score+=50; dotsEaten++;
-    updateScore();
-    powerTimer=300; ghostCombo=0;
-    ghosts.forEach(g=>{ if(!g.eaten){ g.frightened=true; g.blinkTimer=0; } });
-  } else if(map[row][col]===5){
-    map[row][col]=4; score+=200; fruitActive=false; fruitCell=null;
-    updateScore();
-  }
-  // mouth animation
-  p.mouthAngle+=0.05*p.mouthDir;
-  if(p.mouthAngle>=0.25||p.mouthAngle<=0.01) p.mouthDir*=-1;
-}
-
-function ghostAI(g){
-  let speed = g.frightened ? 0.055 : (g.eaten ? 0.18 : 0.085*(1+level*0.04));
-  if(g.mode==='house'){
-    g.houseTimer--;
-    if(g.houseTimer<=0){ g.mode='exit'; g.x=13.5; g.y=13.5; }
-    else { g.x+=Math.sin(g.houseTimer*0.1)*0.04; }
-    return;
-  }
-
-  if(powerTimer>0) g.frightened=true;
-  else { g.frightened=false; g.eaten=false; }
-
-  if(g.scatterTimer>0){ g.scatterTimer--; g.scatter=true; }
-  else { g.scatter=false; }
-
-  // Set targets
-  let tx,ty;
-  if(g.eaten){ tx=13.5; ty=13.5; }
-  else if(g.frightened){ tx=Math.random()*COLS; ty=Math.random()*ROWS; }
-  else if(g.scatter){
-    const corners=[[0,0],[COLS-1,0],[0,ROWS-1],[COLS-1,ROWS-1]];
-    let ci=GHOST_NAMES.indexOf(g.name);
-    [tx,ty]=corners[ci]||corners[0];
-  } else {
-    // Chase AI
-    switch(g.name){
-      case 'Blinky': tx=pacman.x; ty=pacman.y; break;
-      case 'Pinky':  tx=pacman.x+pacman.dx*4; ty=pacman.y+pacman.dy*4; break;
-      case 'Inky':
-        let bx=ghosts[0].x, by=ghosts[0].y;
-        tx=pacman.x+pacman.dx*2; ty=pacman.y+pacman.dy*2;
-        tx=tx+(tx-bx); ty=ty+(ty-by); break;
-      case 'Clyde':
-        let dist=Math.hypot(g.x-pacman.x,g.y-pacman.y);
-        if(dist>8){ tx=pacman.x; ty=pacman.y; }
-        else { tx=0; ty=ROWS-1; }
-        break;
-      default: tx=pacman.x; ty=pacman.y;
-    }
-  }
-  g.targetX=tx; g.targetY=ty;
-
-  // Move toward target
-  let dirs=[{dx:1,dy:0},{dx:-1,dy:0},{dx:0,dy:1},{dx:0,dy:-1}];
-  // don't reverse
-  dirs=dirs.filter(d=>!(d.dx===-g.dx&&d.dy===-g.dy&&(g.dx!==0||g.dy!==0)));
-  let best=null, bestDist=Infinity;
-  for(let d of dirs){
-    if(!canMove(g.x,g.y,d.dx,d.dy)) continue;
-    let nx=g.x+d.dx, ny=g.y+d.dy;
-    let dist=Math.hypot(nx-tx,ny-ty);
-    if(dist<bestDist){ bestDist=dist; best=d; }
-  }
-  if(best){ g.dx=best.dx; g.dy=best.dy; g.eyeDir={x:best.dx,y:best.dy}; }
-  g.x+=g.dx*speed; g.y+=g.dy*speed;
-  // tunnel
-  if(g.x<0) g.x=COLS-0.5; if(g.x>=COLS) g.x=0.5;
-
-  // Return to box after eaten
-  if(g.eaten && Math.hypot(g.x-13.5,g.y-13.5)<0.5){
-    g.eaten=false; g.frightened=false; g.mode='house'; g.houseTimer=120;
-  }
-}
-
-function checkCollisions(){
-  for(let g of ghosts){
-    if(g.mode==='house') continue;
-    let dist=Math.hypot(pacman.x-g.x, pacman.y-g.y);
-    if(dist<0.8){
-      if(g.frightened && !g.eaten){
-        g.eaten=true; g.frightened=false;
-        ghostCombo++; score+=100*Math.pow(2,ghostCombo);
-        updateScore();
-      } else if(!g.eaten && !g.frightened){
-        pacman.alive=false; pacman.deathAnim=0;
-        lives--;
-        updateLives();
-        setTimeout(()=>{
-          if(lives<=0){ gameOver(); }
-          else { respawn(); }
-        },1500);
-        gameRunning=false;
-        return;
-      }
-    }
-  }
-}
-
-function respawn(){
-  pacman={ x:13.5, y:23, dx:0, dy:0, nextDx:0, nextDy:0, mouthAngle:0.25, mouthDir:1, alive:true, deathAnim:0 };
-  ghosts.forEach((g,i)=>{
-    g.x=11+i*1.5; g.y=13.5; g.dx=0; g.dy=0;
-    g.mode='house'; g.houseTimer=i*120; g.frightened=false; g.eaten=false;
-  });
-  gameRunning=true;
-  loop();
-}
-
-function gameOver(){
-  document.getElementById('overlay').style.display='block';
-  document.getElementById('overlay').querySelector('h1').textContent='💀 GAME OVER';
-  document.getElementById('msg').textContent='Score final: '+score;
-}
-
-function nextLevel(){
-  level++;
-  document.getElementById('levelVal').textContent=level;
-  initLevel();
-  gameRunning=true;
-  loop();
-}
-
-function updateScore(){ document.getElementById('scoreVal').textContent=score; }
-function updateLives(){
-  let ld=document.getElementById('lives-display');
-  ld.innerHTML='LIVES: ';
-  for(let i=0;i<lives;i++){
-    let d=document.createElement('div'); d.className='life-icon'; ld.appendChild(d);
-  }
-}
-
-// ---- DRAW ----
-function drawWall(c,r){
-  let x=c*CELL, y=r*CELL;
-  ctx.fillStyle='#1a1aff';
-  ctx.fillRect(x,y,CELL,CELL);
-  ctx.fillStyle='#3333ff';
-  ctx.fillRect(x+1,y+1,CELL-2,CELL-2);
-  // glow edge
-  ctx.strokeStyle='#6699ff';
-  ctx.lineWidth=1;
-  ctx.strokeRect(x+1.5,y+1.5,CELL-3,CELL-3);
-}
-
-function drawDot(c,r){
-  ctx.beginPath();
-  ctx.arc(c*CELL+CELL/2, r*CELL+CELL/2, 2.5, 0, Math.PI*2);
-  ctx.fillStyle='#ffddaa';
-  ctx.fill();
-}
-
-function drawPower(c,r,t){
-  let pulse=0.7+0.3*Math.sin(t*0.1);
-  ctx.beginPath();
-  ctx.arc(c*CELL+CELL/2, r*CELL+CELL/2, 6*pulse, 0, Math.PI*2);
-  ctx.fillStyle=`rgba(255,220,80,${pulse})`;
-  ctx.shadowColor='#FFD700'; ctx.shadowBlur=12*pulse;
-  ctx.fill();
-  ctx.shadowBlur=0;
-}
-
-function drawFruit(c,r){
-  ctx.font='14px Arial'; ctx.textAlign='center'; ctx.textBaseline='middle';
-  ctx.fillText('🍒', c*CELL+CELL/2, r*CELL+CELL/2+1);
-}
-
-function drawPacman(p, t){
-  let cx=p.x*CELL, cy=p.y*CELL;
-  let dir=Math.atan2(p.dy,p.dx)||0;
-  if(p.dx<0) dir=Math.PI;
-  else if(p.dx>0) dir=0;
-  else if(p.dy<0) dir=-Math.PI/2;
-  else if(p.dy>0) dir=Math.PI/2;
-
-  if(!p.alive){
-    // death spin
-    p.deathAnim+=0.08;
-    let angle=p.deathAnim*Math.PI;
-    ctx.beginPath();
-    ctx.moveTo(cx,cy);
-    ctx.arc(cx,cy,CELL/2-1,angle,Math.PI*2-angle+0.01);
-    ctx.closePath();
-    let a=Math.max(0,1-p.deathAnim/2);
-    ctx.fillStyle=`rgba(255,215,0,${a})`;
-    ctx.shadowColor='#FFD700'; ctx.shadowBlur=16;
-    ctx.fill();
-    ctx.shadowBlur=0;
-    return;
-  }
-
-  let open=p.mouthAngle*Math.PI;
-  ctx.beginPath();
-  ctx.moveTo(cx,cy);
-  ctx.arc(cx,cy,CELL/2-1,dir+open,dir+Math.PI*2-open);
-  ctx.closePath();
-  // gradient
-  let grad=ctx.createRadialGradient(cx-3,cy-3,1,cx,cy,CELL/2);
-  grad.addColorStop(0,'#FFEE55'); grad.addColorStop(1,'#FF9900');
-  ctx.fillStyle=grad;
-  ctx.shadowColor='#FFD700'; ctx.shadowBlur=14;
-  ctx.fill();
-  ctx.shadowBlur=0;
-  // eye
-  let ex=cx+Math.cos(dir-Math.PI/4)*5, ey=cy+Math.sin(dir-Math.PI/4)*5;
-  ctx.beginPath(); ctx.arc(ex,ey,2,0,Math.PI*2);
-  ctx.fillStyle='#000'; ctx.fill();
-}
-
-function drawGhost(g, t){
-  let cx=g.x*CELL, cy=g.y*CELL;
-  let r=CELL/2-1;
-  let blink=g.frightened && powerTimer<100 && Math.floor(t/15)%2===0;
-  let bodyColor = g.eaten ? 'transparent' : (g.frightened ? (blink?'#ffffff':'#2222ff') : g.color);
-
-  if(!g.eaten){
-    // body gradient
-    let grad=ctx.createRadialGradient(cx-2,cy-3,1,cx,cy,r);
-    let c1=bodyColor, c2=g.frightened?(blink?'#aaaaff':'#0000aa'):darken(g.color,0.5);
-    grad.addColorStop(0,c1); grad.addColorStop(1,c2);
-    ctx.fillStyle=grad;
-    ctx.shadowColor=bodyColor; ctx.shadowBlur=10;
-
-    // main body
-    ctx.beginPath();
-    ctx.arc(cx, cy-1, r, Math.PI, 0);
-    // wavy bottom
-    let wy=cy-1+r;
-    ctx.lineTo(cx+r, wy);
-    let waves=4, ww=(r*2)/waves;
-    for(let i=0;i<waves;i++){
-      let wx1=cx+r-ww*(i+0.5), wy1=wy+(i%2===0?5:-5);
-      let wx2=cx+r-ww*(i+1);
-      ctx.quadraticCurveTo(wx1,wy1,wx2,wy);
-    }
-    ctx.closePath();
-    ctx.fill();
-    ctx.shadowBlur=0;
-
-    // highlight
-    ctx.beginPath(); ctx.arc(cx-3,cy-4,3,0,Math.PI*2);
-    ctx.fillStyle='rgba(255,255,255,0.35)'; ctx.fill();
-  }
-
-  // Eyes
-  if(!g.frightened || g.eaten){
-    let ex1=cx-4, ex2=cx+4, ey=cy-3;
-    // white of eyes
-    ctx.beginPath(); ctx.ellipse(ex1,ey,3.5,4,0,0,Math.PI*2);
-    ctx.fillStyle='white'; ctx.fill();
-    ctx.beginPath(); ctx.ellipse(ex2,ey,3.5,4,0,0,Math.PI*2);
-    ctx.fillStyle='white'; ctx.fill();
-    // pupils
-    let pd=g.eyeDir||{x:0,y:0};
-    ctx.beginPath(); ctx.arc(ex1+pd.x*1.5,ey+pd.y*1.5,2,0,Math.PI*2);
-    ctx.fillStyle='#0044ff'; ctx.fill();
-    ctx.beginPath(); ctx.arc(ex2+pd.x*1.5,ey+pd.y*1.5,2,0,Math.PI*2);
-    ctx.fillStyle='#0044ff'; ctx.fill();
-    // pupil shine
-    ctx.beginPath(); ctx.arc(ex1+pd.x*1.5-0.8,ey+pd.y*1.5-1,0.8,0,Math.PI*2);
-    ctx.fillStyle='white'; ctx.fill();
-    ctx.beginPath(); ctx.arc(ex2+pd.x*1.5-0.8,ey+pd.y*1.5-1,0.8,0,Math.PI*2);
-    ctx.fillStyle='white'; ctx.fill();
-  } else {
-    // frightened face
-    ctx.beginPath(); ctx.arc(cx-4,cy-2,3,0,Math.PI*2);
-    ctx.fillStyle='white'; ctx.fill();
-    ctx.beginPath(); ctx.arc(cx+4,cy-2,3,0,Math.PI*2);
-    ctx.fillStyle='white'; ctx.fill();
-    // worried mouth
-    ctx.beginPath();
-    for(let i=0;i<5;i++){
-      let mx=cx-6+i*3, my=cy+4+(i%2===0?2:-2);
-      i===0?ctx.moveTo(mx,my):ctx.lineTo(mx,my);
-    }
-    ctx.strokeStyle='rgba(255,255,255,0.7)'; ctx.lineWidth=1.5; ctx.stroke();
-  }
-
-  // draw eaten ghost as just eyes
-  if(g.eaten){
-    let ex1=cx-4, ex2=cx+4, ey=cy-2;
-    ctx.beginPath(); ctx.ellipse(ex1,ey,4,5,0,0,Math.PI*2);
-    ctx.fillStyle='white'; ctx.fill();
-    ctx.beginPath(); ctx.ellipse(ex2,ey,4,5,0,0,Math.PI*2);
-    ctx.fillStyle='white'; ctx.fill();
-    let pd=g.eyeDir||{x:0,y:0};
-    ctx.beginPath(); ctx.arc(ex1+pd.x*2,ey+pd.y*2,2.5,0,Math.PI*2);
-    ctx.fillStyle='#0044ff'; ctx.fill();
-    ctx.beginPath(); ctx.arc(ex2+pd.x*2,ey+pd.y*2,2.5,0,Math.PI*2);
-    ctx.fillStyle='#0044ff'; ctx.fill();
-  }
-}
-
-function darken(hex,f){
-  let r=parseInt(hex.slice(1,3),16)*f|0;
-  let g=parseInt(hex.slice(3,5),16)*f|0;
-  let b=parseInt(hex.slice(5,7),16)*f|0;
-  return `rgb(${r},${g},${b})`;
-}
-
-let tick=0;
-function draw(){
-  ctx.fillStyle='#000'; ctx.fillRect(0,0,W,H);
-
-  // grid
-  for(let r=0;r<ROWS;r++){
-    for(let c=0;c<COLS;c++){
-      let v=map[r][c];
-      if(v===1) drawWall(c,r);
-      else if(v===2) drawDot(c,r);
-      else if(v===3) drawPower(c,r,tick);
-      else if(v===5) drawFruit(c,r);
-    }
-  }
-
-  // fruit
-  if(fruitActive && fruitCell) drawFruit(fruitCell[1],fruitCell[0]);
-
-  // ghost house gate
-  ctx.fillStyle='#FFB8FF';
-  ctx.fillRect(12*CELL,12*CELL+1,4*CELL,3);
-
-  drawPacman(pacman, tick);
-  for(let g of ghosts) drawGhost(g, tick);
-
-  // power bar
-  if(powerTimer>0){
-    let pct=powerTimer/300;
-    ctx.fillStyle='rgba(0,0,0,0.5)'; ctx.fillRect(0,H-6,W,6);
-    ctx.fillStyle=pct>0.5?'#00ff88':(pct>0.25?'#FFD700':'#FF4444');
-    ctx.fillRect(0,H-6,W*pct,6);
-    ctx.fillStyle='#fff'; ctx.font='8px monospace'; ctx.textAlign='center';
-    ctx.fillText('POWER',W/2,H-8);
-  }
-}
-
-function loop(){
-  if(!gameRunning) return;
-  tick++;
-
-  // fruit spawn
-  fruitTimer++;
-  if(dotsEaten===70 && !fruitActive && !fruitCell){
-    fruitActive=true;
-    fruitCell=spawnFruit();
-    fruitTimer=0;
-  }
-  if(fruitActive && fruitTimer>400){ fruitActive=false; fruitCell=null; }
-
-  if(powerTimer>0) powerTimer--;
-  else ghosts.forEach(g=>{ g.frightened=false; if(!g.eaten) g.frightened=false; });
-
-  movePacman();
-  for(let g of ghosts) ghostAI(g);
-  checkCollisions();
-
-  // win check
-  if(dotsEaten>=totalDots){
-    gameRunning=false;
-    setTimeout(()=>{ nextLevel(); },1000);
-  }
-
-  draw();
-  animFrame=requestAnimationFrame(loop);
-}
-
-function spawnFruit(){
-  let candidates=[];
-  for(let r=0;r<ROWS;r++) for(let c=0;c<COLS;c++) if(map[r][c]===4) candidates.push([r,c]);
-  if(!candidates.length) return null;
-  let pick=candidates[Math.floor(Math.random()*candidates.length)];
-  map[pick[0]][pick[1]]=5;
-  return pick;
-}
-
-// Controls
-document.addEventListener('keydown',e=>{
-  const keys={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1],
-               a:[-1,0],d:[1,0],w:[0,-1],s:[0,1],
-               A:[-1,0],D:[1,0],W:[0,-1],S:[0,1]};
-  let k=keys[e.key];
-  if(k){ pacman.nextDx=k[0]; pacman.nextDy=k[1]; e.preventDefault(); }
-});
-
-// Mobile swipe
-let sx,sy;
-canvas.addEventListener('touchstart',e=>{ sx=e.touches[0].clientX; sy=e.touches[0].clientY; });
-canvas.addEventListener('touchend',e=>{
-  let dx=e.changedTouches[0].clientX-sx, dy=e.changedTouches[0].clientY-sy;
-  if(Math.abs(dx)>Math.abs(dy)){ pacman.nextDx=dx>0?1:-1; pacman.nextDy=0; }
-  else { pacman.nextDy=dy>0?1:-1; pacman.nextDx=0; }
-});
-
-updateLives();
-</script>
+  <footer>
+    <p>Feito com Amor </p>
+  </footer>
 </body>
 </html>
