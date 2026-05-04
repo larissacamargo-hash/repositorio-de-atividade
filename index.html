@@ -6,8 +6,7 @@
   <style>
     body {
       font-family: 'Comic Sans MS', cursive, sans-serif;
-      /* Aqui você coloca o link da imagem que quer usar como fundo */
-      background: url('hello kitty4.jpg') no-repeat center center fixed; 
+      background: url('hello kitty4.jpg') no-repeat center center fixed;
       background-size: cover;
       color: #ff3399;
       text-align: center;
@@ -41,7 +40,7 @@
       list-style: none;
       padding: 0;
       margin: 30px auto;
-      max-width: 400px;
+      max-width: 700px;
     }
 
     .link-list li {
@@ -62,7 +61,136 @@
 
     .link-list a:hover {
       background-color: #ffccdd;
-      transform: scale(1.05);
+      transform: scale(1.02);
+    }
+
+    /* === CARD DO QR CODE === */
+    .qr-card {
+      display: inline-block;
+      width: 220px;
+      background-color: rgba(255, 240, 245, 0.95);
+      padding: 12px;
+      border-radius: 12px;
+      color: #ff3399;
+      font-weight: bold;
+      transition: 0.3s;
+      border: 2px solid #ff99cc;
+      cursor: pointer;
+      margin: 8px;
+      vertical-align: top;
+      text-align: center;
+    }
+
+    .qr-card:hover {
+      background-color: #ffccdd;
+      transform: scale(1.03);
+    }
+
+    .qr-card img {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      border-radius: 8px;
+      margin-top: 8px;
+      border: 2px solid #ff99cc;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .qr-card .card-title {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .qr-card .card-actions {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn {
+      background: #ff66b2;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.15s;
+      font-family: 'Comic Sans MS', cursive;
+    }
+
+    .btn:hover { transform: scale(1.05); background: #ff3399; }
+
+    .btn-link {
+      background: #fff;
+      color: #ff3399;
+      border: 2px solid #ff99cc;
+    }
+
+    /* === MODAL DE AMPLIAÇÃO === */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 102, 178, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-box {
+      background: rgba(255, 240, 245, 0.97);
+      border: 4px solid #ff66b2;
+      border-radius: 20px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 0 40px rgba(255, 51, 153, 0.5);
+      animation: popIn 0.25s ease;
+      max-width: 90vw;
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0.7); opacity: 0; }
+      to   { transform: scale(1);   opacity: 1; }
+    }
+
+    .modal-box img {
+      width: min(320px, 80vw);
+      height: min(320px, 80vw);
+      object-fit: contain;
+      border-radius: 12px;
+      border: 3px solid #ff99cc;
+    }
+
+    .modal-box p {
+      margin-top: 12px;
+      font-size: 0.95em;
+      color: #cc0066;
+    }
+
+    .modal-close {
+      margin-top: 12px;
+      background: #ff66b2;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 8px 18px;
+      font-size: 1em;
+      font-family: 'Comic Sans MS', cursive;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
     }
 
     footer {
@@ -71,12 +199,17 @@
       margin-top: 30px;
       border-top: 5px solid #ff66b2;
     }
+
+    @media (max-width: 520px) {
+      .qr-card { width: 46%; }
+    }
   </style>
 </head>
 <body>
+
   <header>
     <img src="hello kitty2.jpg" alt="Hello Kitty estilizada">
-    <h1>🌸 Meus projetos🌸</h1>
+    <h1>🌸 Meus projetos 🌸</h1>
     <p></p>
   </header>
 
@@ -85,22 +218,97 @@
       <li><a href="https://github.com/larissacamargo-hash/teste" target="_blank">Teste</a></li>
       <li><a href="https://github.com/larissacamargo-hash/variavel.js" target="_blank">variavel.js</a></li>
       <li><a href="https://larissacamargo-hash.github.io/phyton/index.html" target="_blank">phyton</a></li>
-      <li><a href="https://gamma.app/docs/Apresentacao-do-SuperApp-de-Agenda-Escolar-Revolucionando-a-Rotin-q95kvmve88zcsrb" target="_blank">App Agenda Escolar</a></li>
-      <li><a href="https://gamma.app/docs/Propriedade-Intelectual-Escolar-Protegendo-o-Conhecimento-e-a-Cri-ywqp11evj7vy8h1" target="_blank">Propriedade Intectual</a></li>
-      <li><a href="https://larissacamargo-hash.github.io/usandofor.js/index.html" target="_blank">usandofor.js</a></li>
-      <li><a href="https://gamma.app/docs/Ecossistema-de-Startups-2026-Brasil-e-America-Latina-dqmaimokvnuvjii" target="_blank">Startups</a></li>
-      <li><a href="https://larissacamargo-hash.github.io/filtrar.js/index.html" target="_blank">filtrar.js</a></li>
-      <li><a href="https://github.com/larissacamargo-hash/alterar---objet2---substring---colchete" target="_blank">alterar---objet2---substring---colchete
-      <li><a href="https://gamma.app/docs/Metricas-e-Melhorias-nos-Negocios-mkebu1txr11hy16" target="_blank">Metricas e Melhorias nos Negocios</a></li>
-      <li><a href="https://github.com/larissacamargo-hash/snack-expo" target="_blank">robson lindo .snack expo-mobile</a></li>
-      <li><a href="https://larissacamargo-hash.github.io/pacman/index.html" target="_blank">pac-man</a></li>
-      </a></li>
-  </ul>
+      <!-- ... outros links ... -->
     </ul>
+
+    <!-- CARDS QR -->
+    <div>
+      <!-- Substitua data-link pelo URL desejado e data-img pelo caminho da imagem -->
+      <div class="qr-card" data-img="QRCODE.png" data-link="https://snack.expo.dev/@maria_eduarda8/carrossel-de-imagens" onclick="abrirModal(this)">
+        <span class="card-title">📱 snack expo carrosel</span>
+        <img src="QRCODE.png" alt="QR Code snack expo carrosel">
+        <div class="card-actions">
+          <button class="btn" onclick="abrirModal(this.parentElement.parentElement); event.stopPropagation();">Ampliar</button>
+          <button class="btn btn-link" onclick="abrirLink(this.parentElement.parentElement); event.stopPropagation();">Link</button>
+        </div>
+      </div>
+
+      <div class="qr-card" data-img="QRCODE2.png" data-link="https://snack.expo.dev/@maria_eduarda8/app-simples" onclick="abrirModal(this)">
+        <span class="card-title">📱 Esnack expo quizzis</span>
+        <img src="QRCODE2.png" alt="QR Code Esnack expo quizzis">
+        <div class="card-actions">
+          <button class="btn" onclick="abrirModal(this.parentElement.parentElement); event.stopPropagation();">Ampliar</button>
+          <button class="btn btn-link" onclick="abrirLink(this.parentElement.parentElement); event.stopPropagation();">Link</button>
+        </div>
+      </div>
+    </div>
+
   </main>
 
+  <!-- MODAL ÚNICO -->
+  <div class="modal-overlay" id="modalOverlay" onclick="fecharModalFora(event)">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <img src="" alt="QR Code ampliado" id="modalImagem">
+      <p id="modalTitle">📷 Aponte a câmera do celular para escanear</p>
+      <div style="margin-top:12px; display:flex; gap:10px; justify-content:center;">
+        <a id="modalLink" class="btn btn-link" href="#" target="_blank" rel="noopener noreferrer">Link</a>
+        <button class="modal-close" onclick="fecharModal()">✕ Fechar</button>
+      </div>
+    </div>
+  </div>
+
   <footer>
-    <p>Feito com Amor </p>
+    <p>Feito com Amor 🌸</p>
   </footer>
+
+  <script>
+    // Abre modal e define imagem + link dinamicamente
+    function abrirModal(card) {
+      // Se foi chamado por botão que passou o elemento, card pode ser o elemento; se for o evento onclick direto, 'card' já é o elemento
+      var el = card;
+      if (typeof card === 'object' && card.nodeType === undefined) {
+        // nada
+      }
+      var imgSrc = el.getAttribute('data-img') || el.querySelector('img')?.src;
+      var link = el.getAttribute('data-link') || '#';
+
+      var modal = document.getElementById('modalOverlay');
+      var modalImg = document.getElementById('modalImagem');
+      var modalLink = document.getElementById('modalLink');
+
+      modalImg.src = imgSrc;
+      modalImg.alt = el.querySelector('.card-title')?.textContent || 'QR Code ampliado';
+      modalLink.href = link;
+
+      modal.classList.add('active');
+    }
+
+    // Abre link em nova aba (botão Link do card)
+    function abrirLink(card) {
+      var link = card.getAttribute('data-link') || '#';
+      if (link && link !== '#') {
+        window.open(link, '_blank', 'noopener');
+      }
+    }
+
+    function fecharModal() {
+      var modal = document.getElementById('modalOverlay');
+      modal.classList.remove('active');
+    }
+
+    // Fecha ao clicar fora do box
+    function fecharModalFora(event) {
+      var modal = document.getElementById('modalOverlay');
+      if (event.target === modal) {
+        fecharModal();
+      }
+    }
+
+    // Fecha com tecla ESC
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') fecharModal();
+    });
+  </script>
+
 </body>
 </html>
